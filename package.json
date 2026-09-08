@@ -1,0 +1,25 @@
+{
+  "name": "aura-ide",
+  "version": "1.0.0",
+  "description": "Collaborative code editor with C++ OT engine and PyTorch LSTM autocomplete",
+  "type": "module",
+  "scripts": {
+    "start:ws": "node server/ws-server.js",
+    "start:client": "node server/static-server.js",
+    "build": "node build.js",
+    "start": "node start.js"
+  },
+  "dependencies": {
+    "ws": "^8.18.0",
+    "@codemirror/state": "^6.4.0",
+    "@codemirror/view": "^6.34.0",
+    "@codemirror/lang-python": "^6.1.0",
+    "@codemirror/autocomplete": "^6.18.0",
+    "@codemirror/language": "^6.10.0",
+    "@codemirror/commands": "^6.7.0",
+    "@codemirror/search": "^6.5.0",
+    "@codemirror/lint": "^6.8.0",
+    "@codemirror/theme-one-dark": "^6.1.0",
+    "esbuild": "^0.24.0"
+  }
+}

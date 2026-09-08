@@ -1,0 +1,253 @@
+:root {
+  /* Anthropic-inspired warm dark aesthetic */
+  --bg-color: #1a1918;
+  --bg-surface: #242321;
+  --bg-surface-hover: #32302d;
+  --border-color: #383633;
+  
+  --text-primary: #e6e3dd;
+  --text-secondary: #a39f98;
+  --text-muted: #73706b;
+  
+  --accent-color: #d4a373; /* warm muted gold/peach */
+  --accent-hover: #e3b88d;
+  
+  --font-serif: 'Newsreader', ui-serif, Georgia, serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', 'Fira Code', 'JetBrains Mono', monospace;
+  
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
+  font-family: var(--font-sans);
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Toolbar */
+#toolbar {
+  height: 48px;
+  background-color: var(--bg-surface);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.toolbar-left, .toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.room-badge {
+  background-color: var(--bg-color);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Users Panel */
+.users-panel {
+  display: flex;
+  gap: 8px;
+}
+
+.user-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  color: var(--text-primary);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.user-tag .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.status-dot.connected { background-color: #6a994e; }
+.status-dot.disconnected { background-color: #bc4749; }
+
+/* Editor Container */
+#editor-container {
+  flex: 1;
+  overflow: hidden;
+  background-color: var(--bg-color);
+}
+
+.cm-editor {
+  height: 100%;
+}
+
+.cm-scroller {
+  font-family: var(--font-mono) !important;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Customize the CodeMirror One Dark theme slightly to match our warm background */
+.cm-theme-one-dark {
+  background-color: transparent !important;
+}
+.cm-gutters {
+  background-color: var(--bg-color) !important;
+  border-right: 1px solid var(--border-color) !important;
+  color: var(--text-muted) !important;
+}
+
+/* Remote Cursors */
+.cm-ySelectionInfo {
+  position: absolute;
+  top: -1.6em;
+  left: 0;
+  font-size: 11px;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  color: white;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 100;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Status Bar */
+#statusbar {
+  height: 32px;
+  background-color: var(--bg-surface);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.ai-badge {
+  color: var(--accent-color);
+  font-weight: 500;
+}
+
+/* Dialog / Modal */
+dialog {
+  margin: auto;
+  padding: 32px;
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  width: 100%;
+  max-width: 400px;
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+}
+
+dialog h2 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 24px;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+dialog p {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+dialog form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+dialog input {
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+dialog input:focus {
+  border-color: var(--accent-color);
+}
+
+dialog button {
+  background-color: var(--text-primary);
+  color: var(--bg-color);
+  border: none;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform 0.1s ease, background-color 0.2s ease;
+}
+
+dialog button:hover {
+  background-color: #fff;
+}
+
+dialog button:active {
+  transform: scale(0.98);
+}

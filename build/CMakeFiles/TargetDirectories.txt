@@ -1,0 +1,3 @@
+F:/KGP/MY_Projects/Aura-IDE/build/CMakeFiles/tcp_server.dir
+F:/KGP/MY_Projects/Aura-IDE/build/CMakeFiles/edit_cache.dir
+F:/KGP/MY_Projects/Aura-IDE/build/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura IDE</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Importing a sophisticated Serif font for the Anthropic aesthetic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+    <header id="toolbar">
+      <div class="toolbar-left">
+        <span class="logo">Aura</span>
+        <span id="room-name" class="room-badge">Room: default</span>
+      </div>
+      <div class="toolbar-right">
+        <div id="users-panel" class="users-panel"></div>
+        <span id="connection-status" class="status-dot disconnected"></span>
+      </div>
+    </header>
+    <main id="editor-container"></main>
+    <footer id="statusbar">
+      <span id="status-left">Python &nbsp;&middot;&nbsp; UTF-8</span>
+      <span id="status-center" class="ai-badge">AI Active</span>
+      <span id="status-right">Ln 1, Col 1</span>
+    </footer>
+  </div>
+
+  <dialog id="username-dialog">
+    <form method="dialog">
+      <h2>Welcome to Aura</h2>
+      <p>Enter your name to join the collaborative session.</p>
+      <input type="text" id="username-input" placeholder="Your name" autofocus required>
+      <button type="submit">Join Workspace</button>
+    </form>
+  </dialog>
+
+  <script type="module" src="dist/bundle.js"></script>
+</body>
+</html>
